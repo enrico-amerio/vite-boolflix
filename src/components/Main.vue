@@ -28,8 +28,8 @@ import Card from './partials/Card.vue';
   <h2>Series</h2>
   <div v-if="this.store.seriesList.length > 0" class="container d-flex  flex-wrap justify-content-center ">
       <Card v-for="card in this.store.seriesList" :key="card.id"
-        :title="card.title"
-        :originalTitle="card.original_title"
+        :title="card.name"
+        :originalTitle="card.original_name"
         :language="card.original_language"
         :vote="card.vote_average"
       />

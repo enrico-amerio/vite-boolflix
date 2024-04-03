@@ -8,7 +8,7 @@ export const store = reactive({
   seriesList:[],
   searchParams: {
     api_key: 'f011ab811e809591e1e8e9fdcaa603d4',
-    query: 'Matrix',
+    query: '',
     totPages: 0,
     error:'',
     language: 'it'

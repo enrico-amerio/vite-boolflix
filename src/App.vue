@@ -15,6 +15,10 @@ import { store } from './data/store';
     },
     methods:{
       getApi(){
+        this.getApiMovies();
+        this.getApiSeries();
+      },
+      getApiMovies(){
         axios.get(store.apiUrlMovies,{
           params: store.searchParams
         }).then(result => {
@@ -27,16 +31,30 @@ import { store } from './data/store';
           store.searchParams.error = "Nessun risultato"
         })
       },
+      getApiSeries(){
+        axios.get(store.apiUrlSeries,{
+          params: store.searchParams
+        }).then(result => {
+        store.seriesList = result.data.results
+        store.searchParams.totPages = result.data.total_pages
+      console.log(store.seriesList)})
+        .catch(error => {
+          store.seriesList = []
+          store.searchParams.totPages = 0
+          store.searchParams.error = "Nessun risultato"
+        })
+      },
       
     },
     mounted(){
-      this.getApi();
+      this.getApiMovies();
+      this.getApiSeries();
     }
   }
 </script>
 
 <template>
-  <Header />
+  <Header @search="getApi"/>
   <Main />
 </template>
 
