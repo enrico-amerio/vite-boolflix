@@ -22,7 +22,6 @@ import Card from './partials/Card.vue';
   }
 </script>
 
-
 <template>
   <div v-if="this.store[type].length > 0" class="wrapper">
     <h2 class="text-center ">{{ title }}</h2>
@@ -32,13 +31,11 @@ import Card from './partials/Card.vue';
           :originalTitle="card.original_title || card.original_name"
           :language="card.original_language"
           :vote="card.vote_average"
+          :img="card.backdrop_path"
         />
     </div>
-
   </div>
 </template>
-
-
 
 <style lang="scss" scoped>
 

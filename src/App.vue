@@ -17,7 +17,6 @@ import { store } from './data/store';
       search(){
         this.getApi('movie');
         this.getApi('tv');
-        this.store.availableFla
       },
       getApi(type){
         axios.get(store.apiUrl + type,{
