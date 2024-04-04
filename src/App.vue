@@ -14,47 +14,31 @@ import { store } from './data/store';
       }
     },
     methods:{
-      getApi(){
-        this.getApiMovies();
-        this.getApiSeries();
+      search(){
+        this.getApi('movie');
+        this.getApi('tv');
       },
-      getApiMovies(){
-        axios.get(store.apiUrlMovies,{
+      getApi(type){
+        axios.get(store.apiUrl + type,{
           params: store.searchParams
         }).then(result => {
-        store.moviesList = result.data.results
-        store.searchParams.totPages = result.data.total_pages
-      console.log(store.moviesList)})
+        store[type] = result.data.results})
         .catch(error => {
-          store.moviesList = []
-          store.searchParams.totPages = 0
+          store[type] = []
           store.searchParams.error = "Nessun risultato"
         })
-      },
-      getApiSeries(){
-        axios.get(store.apiUrlSeries,{
-          params: store.searchParams
-        }).then(result => {
-        store.seriesList = result.data.results
-        store.searchParams.totPages = result.data.total_pages
-      console.log(store.seriesList)})
-        .catch(error => {
-          store.seriesList = []
-          store.searchParams.totPages = 0
-          store.searchParams.error = "Nessun risultato"
-        })
-      },
+        
+      }
       
     },
     mounted(){
-      this.getApiMovies();
-      this.getApiSeries();
+      this.search()
     }
   }
 </script>
 
 <template>
-  <Header @search="getApi"/>
+  <Header @search="search"/>
   <Main />
 </template>
 

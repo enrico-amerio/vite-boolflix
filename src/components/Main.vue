@@ -17,8 +17,8 @@ import Card from './partials/Card.vue';
 
 <template>
   <h2>Movies</h2>
-  <div v-if="this.store.moviesList.length > 0" class="container d-flex  flex-wrap justify-content-center ">
-      <Card v-for="card in this.store.moviesList" :key="card.id"
+  <div v-if="this.store.movie.length > 0" class="container d-flex  flex-wrap justify-content-center ">
+      <Card v-for="card in this.store.movie" :key="card.id"
         :title="card.title"
         :originalTitle="card.original_title"
         :language="card.original_language"
@@ -26,8 +26,8 @@ import Card from './partials/Card.vue';
       />
   </div>
   <h2>Series</h2>
-  <div v-if="this.store.seriesList.length > 0" class="container d-flex  flex-wrap justify-content-center ">
-      <Card v-for="card in this.store.seriesList" :key="card.id"
+  <div v-if="this.store.tv.length > 0" class="container d-flex  flex-wrap justify-content-center ">
+      <Card v-for="card in this.store.tv" :key="card.id"
         :title="card.name"
         :originalTitle="card.original_name"
         :language="card.original_language"
