@@ -25,10 +25,10 @@ import Card from './partials/Card.vue';
 
 <template>
   <h2>{{ title }}</h2>
-  <div v-if="this.store.movie.length > 0" class="container d-flex  flex-wrap justify-content-center ">
-      <Card v-for="card in this.store.movie" :key="card.id"
-        :title="card.title"
-        :originalTitle="card.original_title"
+  <div v-if="this.store[type].length > 0" class="container d-flex  flex-wrap justify-content-center ">
+      <Card v-for="card in this.store[type]" :key="card.id"
+        :title="card.title || card.name"
+        :originalTitle="card.original_title || card.original_name"
         :language="card.original_language"
         :vote="card.vote_average"
       />
