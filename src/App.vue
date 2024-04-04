@@ -1,12 +1,12 @@
 <script>
 import Header from './components/Header.vue';
-import Main from './components/Main.vue';
+import CardsContainer from './components/CardsContainer.vue';
 import axios from 'axios';
 import { store } from './data/store';
   export default {
     components:{
       Header,
-      Main
+      CardsContainer
     },
     data(){
       return{
@@ -39,7 +39,8 @@ import { store } from './data/store';
 
 <template>
   <Header @search="search"/>
-  <Main />
+  <CardsContainer type="movie"/>
+  <CardsContainer type="tv" />
 </template>
 
 
