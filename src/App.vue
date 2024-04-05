@@ -23,10 +23,7 @@ import { store } from './data/store';
         this.store.isLoading = true;
       },
       getApi(type){
-        console.log( 'prima',this.store.isError);
         this.store.isError = false
-        console.log( 'dopo',this.store.isError);
-        
         axios.get(store.apiUrl + type,{
           params: store.searchParams
         }).then(result => {
@@ -34,8 +31,6 @@ import { store } from './data/store';
           store[type] = result.data.results
           store[`pages_${type}`] = result.data.total_pages
           store.searchParams.total_pages = result.data.total_pages
-          console.log(this.store.tv.length)
-          console.log(this.store.movie.length)
           this.checkForError()
         })
         .catch(error => {
@@ -47,7 +42,6 @@ import { store } from './data/store';
       checkForError(){
         if(this.store.tv.length === 0 && this.store.movie.length === 0 && isLoading === false){
           this.store.isError = true
-          console.log( this.store.isError);
         }
       }
       
@@ -67,9 +61,7 @@ import { store } from './data/store';
   <div v-if="this.store.isError">
     <ZeroResoult />
   </div>
-
 </template>
-
 
 
 <style lang="scss" scoped>

@@ -25,8 +25,8 @@ import {store} from '../data/store'
       <a class="navbar-brand text-danger ms-2 h1 logo" href="#">BOOLFLIX</a>
     </div>
     <div class="col d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" v-model.trim="nameToSearch">
-      <button class="btn btn-danger" @click="search(nameToSearch)">Search</button>
+      <input class="form-control me-2" type="search" placeholder="Search" v-model.trim="nameToSearch" required>
+      <button class="btn btn-danger" @click="nameToSearch.length > 0 && search(nameToSearch)">Search</button>
     </div>
   </div>
 </nav>
