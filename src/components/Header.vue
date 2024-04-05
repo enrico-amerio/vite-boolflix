@@ -21,11 +21,11 @@ import {store} from '../data/store'
 <template>
 <nav class="d-flex flex-column justify-content-center ">
   <div class="row">
-    <div class="col-9"> 
+    <div class="col-7"> 
       <a class="navbar-brand text-danger ms-2 h1 logo" href="#">BOOLFLIX</a>
     </div>
     <div class="col d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" v-model="nameToSearch">
+      <input class="form-control me-2" type="search" placeholder="Search" v-model.trim="nameToSearch">
       <button class="btn btn-danger" @click="search(nameToSearch)">Search</button>
     </div>
   </div>

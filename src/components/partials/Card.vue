@@ -31,6 +31,7 @@ import {store} from '../../data/store';
   
   <div class="card m-3" style="width: 18rem;">
     <img v-if="img" class="poster" :src="'https://image.tmdb.org/t/p/original/'+ img" :alt="img">
+    <img v-else class="poster" src="/img/noimageavailable2.png" alt="">
     <h2 class="title">{{ title }}</h2>
     <div class="movie-info">
       <h5>Titolo originale: {{ originalTitle }}</h5>
@@ -51,7 +52,6 @@ import {store} from '../../data/store';
   position: relative;
   color: white;
   box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
-  background: grey;
 
   .poster {
     position: absolute;
@@ -70,6 +70,8 @@ import {store} from '../../data/store';
     transition: inset .3s .3s ease-out;
     font-weight: normal;
     text-transform: uppercase;
+    text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.8), -3px 0px 7px rgba(0, 0, 0, 0.8), 0px 4px 7px rgba(0, 0, 0, 0.8);
+
   }
   .movie-info {
     position: absolute;

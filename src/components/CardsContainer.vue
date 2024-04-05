@@ -38,5 +38,7 @@ import Card from './partials/Card.vue';
 </template>
 
 <style lang="scss" scoped>
-
+.wrapper{
+  padding-top: 80px
+}
 </style>
