@@ -6,7 +6,8 @@ import {store} from '../../data/store';
       originalTitle: String,
       language : String,
       vote: Number,
-      img: String
+      img: String,
+      total_pages: Number
     },
     data(){
       return{
@@ -29,7 +30,7 @@ import {store} from '../../data/store';
 </script>
 <template>
   
-  <div class="card m-3" style="width: 18rem;">
+  <div class="card m-3" style="width: 18rem;" @click="console.log(this.store.searchParams.total_pages)">
     <img v-if="img" class="poster" :src="'https://image.tmdb.org/t/p/original/'+ img" :alt="img">
     <img v-else class="poster" src="/img/noimageavailable2.png" alt="">
     <h2 class="title">{{ title }}</h2>

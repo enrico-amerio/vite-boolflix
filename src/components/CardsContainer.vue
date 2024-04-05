@@ -1,17 +1,27 @@
 <script>
 import {store} from '../data/store';
 import Card from './partials/Card.vue';
+import PageBrowser from './partials/PageBrowser.vue';
 
   export default {
     props:{
       type:String
     },
     components:{
-      Card
+      Card,
+      PageBrowser
     },
     data(){
       return{
         store
+      }
+    },
+    methods:{
+      callFunctionNext(){
+        this.$emit('goNext')
+      },
+      callFunctionPrev(){
+        this.$emit('goPrev')
       }
     },
     computed:{
@@ -34,11 +44,16 @@ import Card from './partials/Card.vue';
           :img="card.backdrop_path"
         />
     </div>
+    <PageBrowser :type="type" @goNext="callFunctionNext" @goPrev="callFunctionPrev" />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .wrapper{
   padding-top: 80px
+}
+.wrapper.error{
+  font-size: 50px;
+ 
 }
 </style>

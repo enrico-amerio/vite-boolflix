@@ -8,7 +8,7 @@ import {store} from '../data/store'
     },
     methods:{
       search(nameToSearch){
-        this.store.searchParams.totPages = 0
+        this.store.searchParams.total_pages = 0
         this.store.searchParams.query = nameToSearch
         this.$emit('search');
       }
