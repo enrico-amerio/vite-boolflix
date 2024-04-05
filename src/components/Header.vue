@@ -3,14 +3,17 @@ import {store} from '../data/store'
   export default {  
     data(){
       return{
-        store
+        store,
+        nameToSearch: ''
       }
     },
     methods:{
       search(nameToSearch){
         this.store.searchParams.total_pages = 0
         this.store.searchParams.query = nameToSearch
+        this.nameToSearch = ''
         this.$emit('search');
+
       }
     }
     
@@ -21,11 +24,11 @@ import {store} from '../data/store'
 <template>
 <nav class="d-flex flex-column justify-content-center ">
   <div class="row">
-    <div class="col-7"> 
+    <div class="col-6"> 
       <a class="navbar-brand text-danger ms-2 h1 logo" href="#" @click="$emit('backhome')">BOOLFLIX</a>
     </div>
     <div class="col d-flex">
-      <input class="form-control me-2" placeholder="Search" v-model.trim="nameToSearch" required>
+      <input class="form-control me-2" placeholder="Search" v-model.trim="nameToSearch">
       <button class="btn btn-danger" @click="nameToSearch.length > 0 && search(nameToSearch)">Search</button>
     </div>
   </div>

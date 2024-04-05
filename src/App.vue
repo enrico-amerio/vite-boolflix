@@ -23,7 +23,9 @@ import { store } from './data/store';
         this.getTrend('movie');
         this.getTrend('tv');
         this.store.imHome = true;
+        store.isError = false;
         
+
       },
       getTrend(type){
         this.store.isLoading = true;
@@ -43,6 +45,9 @@ import { store } from './data/store';
         this.getApi('movie');
         this.getApi('tv');
         this.store.isLoading = true;
+        this.store.countermovie = 1
+        this.store.countertv = 1
+        this.store.searchParams.page = 1
       },
       getApi(type){
         this.store.imHome = false;
@@ -91,6 +96,6 @@ import { store } from './data/store';
 </template>
 
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @use './assets/scss/main.scss';
 </style>

@@ -41,6 +41,7 @@ export default {
 <style>
 p{
     margin: 10px 10px 0 0;
+    color: white;
   }
  
 

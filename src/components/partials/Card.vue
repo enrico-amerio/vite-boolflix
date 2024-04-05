@@ -33,7 +33,7 @@ import {store} from '../../data/store';
   <div class="card m-3" style="width: 18rem;" @click="console.log(this.store.searchParams.total_pages)">
     <img v-if="img" class="poster" :src="'https://image.tmdb.org/t/p/original/'+ img" :alt="img">
     <img v-else class="poster" src="/img/noimageavailable2.png" alt="">
-    <h2 class="title">{{ title }}</h2>
+    <h3 class="title">{{ title }}</h3>
     <div class="movie-info">
       <h5>Titolo originale: {{ originalTitle }}</h5>
       <div v-if="this.store.availableFlags.includes(language)"> <img class="flag" :src="'img/' + language + '.png'" alt=""> </div>
@@ -64,7 +64,7 @@ import {store} from '../../data/store';
     opacity: 0.8;
     transition: opacity .2s ease-out;
   }
-  h2 {
+  h3 {
     position: absolute;
     inset: auto auto 30px 30px;
     margin: 0;
@@ -83,7 +83,7 @@ import {store} from '../../data/store';
     padding: 5px;
     border-radius: 5px;
   }
-  &:hover h2 {
+  &:hover h3 {
     inset: auto auto 220px 30px;
     transition: inset .3s ease-out;
     
