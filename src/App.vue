@@ -1,6 +1,7 @@
 <script>
 import Header from './components/Header.vue';
 import CardsContainer from './components/CardsContainer.vue';
+import TrendContainer from './components/TrendContainer.vue'
 import ZeroResoult from './components/ZeroResoult.vue';
 import axios from 'axios';
 import { store } from './data/store';
@@ -8,7 +9,8 @@ import { store } from './data/store';
     components:{
       Header,
       CardsContainer,
-      ZeroResoult
+      ZeroResoult,
+      TrendContainer
       
     },
     data(){
@@ -17,13 +19,34 @@ import { store } from './data/store';
       }
     },
     methods:{
+      prepareHome(){
+        this.getTrend('movie');
+        this.getTrend('tv');
+        this.store.imHome = true;
+        
+      },
+      getTrend(type){
+        this.store.isLoading = true;
+        axios.get(store.apiUrlTrend + type + '/day?',{
+          params: store.homeParams
+        }).then(result => {
+          this.store.isLoading = false;
+          store[`trend_${type}`] = result.data.results
+          console.log(store.trend_tv);
+        }).catch(error => {
+          store[`trend_${type}`] = []
+          store.isError = true
+        })
+        
+      },
       search(){
         this.getApi('movie');
         this.getApi('tv');
         this.store.isLoading = true;
       },
       getApi(type){
-        this.store.isError = false
+        this.store.imHome = false;
+        this.store.isError = false;
         axios.get(store.apiUrl + type,{
           params: store.searchParams
         }).then(result => {
@@ -47,14 +70,18 @@ import { store } from './data/store';
       
     },
     mounted(){
-      // this.search()
+      this.prepareHome()
     }
   }
 </script>
 
 <template>
-  <Header @search="search"/>
-  <div>
+  <Header @search="search" @backhome="prepareHome"/>
+  <div v-if="this.store.imHome">
+    <TrendContainer type="movie"  />
+    <TrendContainer type="tv"  />
+  </div>
+  <div v-if="!this.store.imHome">
     <CardsContainer type="movie"  @goNext="getApi('movie')" @goPrev="getApi('movie')"/>
     <CardsContainer type="tv" @goNext="getApi('tv')" @goPrev="getApi('tv')" />
   </div>
