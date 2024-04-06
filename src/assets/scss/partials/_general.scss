@@ -1,5 +1,48 @@
 @use './variables' as *;
 
+*{
+  margin: 0;
+  padding: 0;
+}
 body{
   background-color: #27282b;
+}
+.overflow-hidden{
+  overflow: hidden;
+}
+
+ *{
+  scrollbar-width: thin;
+  scrollbar-color: #BB2D3B #DFE9EB;
+}
+
+
+*::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #000000;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #BB2D3B;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #F23A4C;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #F23A4C;
 }

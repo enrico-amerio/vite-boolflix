@@ -28,6 +28,15 @@ export default {
     title() {
       return this.type === 'movie' ? 'TOP FILMS' : 'TOP SERIE TV'
     } 
+  },
+  methods:{
+    getInfo(id, type){
+      document.body.classList.add("overflow-hidden");
+      this.store.focusedObj = [];
+      this.store.isLoading = true;
+      this.store.isFocus = true;
+      this.$emit('getInfo', id, type);
+    }
   }
   
 }
@@ -49,7 +58,9 @@ export default {
             :language="card.original_language"
             :vote="card.vote_average"
             :img="card.backdrop_path"
+            :id="card.id"
             :virtual="true"
+            @click="getInfo(card.id, this.type)"
           />
         </swiper-slide>
           

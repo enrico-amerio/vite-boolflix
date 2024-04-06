@@ -7,7 +7,9 @@ import {store} from '../../data/store';
       language : String,
       vote: Number,
       img: String,
-      total_pages: Number
+      total_pages: Number,
+      tipo: String,
+      id: Number
     },
     data(){
       return{
@@ -23,20 +25,20 @@ import {store} from '../../data/store';
         for(let j=0; j < 5 - vote; j++){
         stars += "<i class='fa-regular fa-star'></i>";}
         return stars;
-      }
+      },
+     
     }
   
   }
 </script>
 <template>
-  
-  <div class="card m-3" style="width: 18rem;" @click="console.log(this.store.searchParams.total_pages)">
+  <div class="card m-3" :id="id" style="width: 18rem;">
     <img v-if="img" class="poster" :src="'https://image.tmdb.org/t/p/original/'+ img" :alt="img">
     <img v-else class="poster" src="/img/noimageavailable2.png" alt="">
     <h3 class="title">{{ title }}</h3>
     <div class="movie-info">
       <h5>Titolo originale: {{ originalTitle }}</h5>
-      <div v-if="this.store.availableFlags.includes(language)"> <img class="flag" :src="'img/' + language + '.png'" alt=""> </div>
+      <div v-if="this.store.availableFlags.includes(language)"> <img class="flag" :src="'img/' + language + '.png'" alt=""></div>
       <div v-else> {{ language }}</div>
       <div v-html="getVote(vote)"></div>
     </div>

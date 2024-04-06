@@ -28,7 +28,7 @@ import {store} from '../data/store'
       <a class="navbar-brand text-danger ms-2 h1 logo" href="#" @click="$emit('backhome')">BOOLFLIX</a>
     </div>
     <div class="col d-flex">
-      <input class="form-control me-2" placeholder="Search" v-model.trim="nameToSearch">
+      <input class="form-control me-2" placeholder="Search" v-model.trim="nameToSearch" @keyup.enter="nameToSearch.length > 0 && search(nameToSearch)">
       <button class="btn btn-danger" @click="nameToSearch.length > 0 && search(nameToSearch)">Search</button>
     </div>
   </div>
@@ -47,6 +47,11 @@ nav{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     .logo{
     font-size: 1.8rem;
+    }
+    input:focus {   
+      border-color: #bb2d3b;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #bb2d3b;
+      outline: 0 none;
     }
 }
 </style>

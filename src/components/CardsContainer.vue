@@ -22,7 +22,14 @@ import PageBrowser from './partials/PageBrowser.vue';
       },
       callFunctionPrev(){
         this.$emit('goPrev')
-      }
+      },
+      getInfo(id, type){
+      document.body.classList.add("overflow-hidden");
+      this.store.focusedObj = [],
+      this.store.isLoading = true
+      this.store.isFocus = true;
+      this.$emit('getInfo', id, type)
+    }
     },
     computed:{
       title(){
@@ -37,11 +44,14 @@ import PageBrowser from './partials/PageBrowser.vue';
     <h2 class="text-center ">{{ title }}</h2>
     <div  class="container d-flex  flex-wrap justify-content-center ">
         <Card v-for="card in this.store[type]" :key="card.id"
+          :class=" `${type}` "
+          :id="card.id"
           :title="card.title || card.name"
           :originalTitle="card.original_title || card.original_name"
           :language="card.original_language"
           :vote="card.vote_average"
           :img="card.backdrop_path"
+          @click="getInfo(card.id, this.type)"
         />
     </div>
     <PageBrowser :type="type" @goNext="callFunctionNext" @goPrev="callFunctionPrev" />

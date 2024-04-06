@@ -9,6 +9,8 @@ export const store = reactive({
   apiUrl: 'https://api.themoviedb.org/3/search/' ,
   movie: [],
   tv:[],
+  apiUrlFocus: 'https://api.themoviedb.org/3/',
+  focusedObj: [],
   pages_movie: 0,
   pages_tv: 0,
   availableFlags: ['en', 'it'],
@@ -16,6 +18,7 @@ export const store = reactive({
   countertv: 1,
   isError: false,
   isLoading: false,
+  isFocus:false,
   searchParams: {
     api_key: 'f011ab811e809591e1e8e9fdcaa603d4',
     query: '',
